@@ -72,7 +72,7 @@ function initHero() {
   if (!hero) return;
 
   // Parallax effect on scroll
-  const heroImage = hero.querySelector('.hero-image');
+  const heroImage = hero.querySelector('.hero-image') || hero.querySelector('.hero-bg img');
   const heroContent = hero.querySelector('.hero-content');
 
   window.addEventListener('scroll', debounce(() => {
@@ -81,11 +81,11 @@ function initHero() {
     
     if (heroRect.bottom > 0) {
       const parallaxSpeed = 0.3;
-      heroImage.style.transform = `translateY(${scrolled * parallaxSpeed}px)`;
+      if (heroImage) heroImage.style.transform = `translateY(${scrolled * parallaxSpeed}px)`;
       
       // Fade out content on scroll
       const opacity = 1 - (scrolled / (heroRect.height * 0.8));
-      heroContent.style.opacity = Math.max(0, opacity);
+      if (heroContent) heroContent.style.opacity = Math.max(0, opacity);
     }
   }, 10));
 
