@@ -32,7 +32,16 @@
 
   /* TIPOGRAFÍA */
   --f-display: 'Playfair Display', Georgia, serif;
+  --f-heading: 'Playfair Display', Georgia, serif;
   --f-body: 'DM Sans', 'Helvetica Neue', sans-serif;
+
+  /* COLORES EXTRA (para premium-custom) */
+  --s-beige: #E8DFD0;
+  --s-mocha-alt: #8B7D6B;
+  --s-brown: #5C4F3D;
+  --s-black: #1A1612;
+  --s-gold-light: #D4BA8A;
+  --s-white: #FFFFFF;
 
   /* ESPACIADO */
   --sp-xs: 4px;
@@ -44,6 +53,22 @@
   --sp-3xl: 64px;
   --sp-4xl: 96px;
   --sp-5xl: 128px;
+
+  /* ESPACIADO ALTERNATIVO (para premium-custom) */
+  --space-xs: 8px;
+  --space-s: 16px;
+  --space-m: 24px;
+  --space-l: 40px;
+  --space-xl: 64px;
+  --space-2xl: 96px;
+  --space-3xl: 128px;
+
+  /* COMPONENTES */
+  --section-pad: 96px;
+  --section-pad-mobile: 64px;
+  --container: 1200px;
+  --radius: 2px;
+  --duration: 0.3s;
 
   /* ANIMACIÓN */
   --ease: cubic-bezier(0.25, 0.1, 0.25, 1);

@@ -1,17 +1,29 @@
 # ─── Shopify ───
 config/settings_data.json
 
-# ─── Imágenes grandes ───
+# ─── Imágenes grandes / innecesarias ───
 *.psd
 *.ai
 *.tiff
 *.bmp
 *.raw
+*.pdf
+
+# Imágenes que no deben ir en el repo (se suben directo a Shopify)
+assets/imagendeprueba.jpg
+assets/imagendeprueba-c.jpg
+assets/hero-bg.jpg
+assets/hero-bg.png
+assets/hero-option5.png
+assets/sparkle.gif
 
 # ─── Archivos de sistema ───
 .DS_Store
 Thumbs.db
 desktop.ini
+*.swp
+*.swo
+*~
 
 # ─── Node / dependencias ───
 node_modules/
@@ -23,3 +35,6 @@ yarn.lock
 .env
 .env.local
 .tmp
+
+# ─── Scripts de utilidad ───
+fix_encoding*.py

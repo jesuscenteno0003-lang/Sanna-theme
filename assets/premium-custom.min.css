@@ -1,48 +1,12 @@
 /* ============================================
+   SERENNE — Premium Components
+   Variables defined in serenne-design-system.css
+   ============================================ */
+
+/* ============================================
    SERENNE — Premium Design System
    Inspired by Aesop, Rituals, Apple, Le Labo
    ============================================ */
-
-/* --- FOUNDATIONS --- */
-:root {
-  --s-ivory: #FDFBF7;
-  --s-cream: #F5F0E8;
-  --s-beige: #E8DFD0;
-  --s-sand: #D4C5B0;
-  --s-taupe: #B8A99A;
-  --s-mocha: #8B7D6B;
-  --s-brown: #5C4F3D;
-  --s-dark: #2C2416;
-  --s-black: #1A1612;
-  --s-gold: #C9A96E;
-  --s-gold-light: #D4BA8A;
-  --s-white: #FFFFFF;
-
-  --f-heading: 'Cormorant Garamond', 'Georgia', serif;
-  --f-body: 'Jost', 'Helvetica Neue', sans-serif;
-
-  --space-xs: 8px;
-  --space-s: 16px;
-  --space-m: 24px;
-  --space-l: 40px;
-  --space-xl: 64px;
-  --space-2xl: 96px;
-  --space-3xl: 128px;
-
-  --section-pad: 96px;
-  --section-pad-mobile: 64px;
-  --container: 1200px;
-  --radius: 2px;
-
-  --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  --duration: 0.3s;
-}
-
-@media (max-width: 749px) {
-  :root {
-    --section-pad: var(--section-pad-mobile);
-  }
-}
 
 /* --- RESET & BASE --- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
