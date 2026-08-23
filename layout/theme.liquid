@@ -29,7 +29,7 @@
     {% if page_description %}
       <meta name="description" content="{{ page_description | escape }}">
     {% elsif request.page_type == 'index' %}
-      <meta name="description" content="REPISA - Tu estante de belleza curado. Marcas premium de skincare, maquillaje, fragancias y cuidado capilar. Envío gratis en pedidos +S/.200.">
+      <meta name="description" content="REPISA - Tu estante de belleza curado. Marcas premium de skincare, maquillaje, fragancias y más. Envío gratis en pedidos +S/.200.">
     {% endif %}
 
     {% render 'meta-tags' %}
@@ -297,10 +297,9 @@
       >
     {%- endif -%}
 
-    <!-- Premium CSS & JS -->
-    {{ 'serenne-design-system.css' | asset_url | stylesheet_tag }}
+    <!-- REPISA Design System -->
+    {{ 'repisa-design-system.css' | asset_url | stylesheet_tag }}
     {{ 'premium-custom.min.css' | asset_url | stylesheet_tag }}
-    {{ 'serenne-overrides.css' | asset_url | stylesheet_tag }}
     <script src="{{ 'premium-scripts.js' | asset_url }}" defer="defer"></script>
 
     <script>
@@ -316,16 +315,16 @@
     </a>
 
     {%- if settings.cart_type == 'drawer' -%}
-      {%- render 'serenne-cart-drawer' -%}
+      {%- render 'cart-drawer' -%}
     {%- endif -%}
 
-    {% render 'serenne-header' %}
+    {% render 'repisa-header' %}
 
     <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
       {{ content_for_layout }}
     </main>
 
-    {% render 'serenne-footer' %}
+    {% render 'repisa-footer' %}
 
     <ul hidden>
       <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>

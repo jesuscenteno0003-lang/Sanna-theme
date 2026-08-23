@@ -1,0 +1,92 @@
+<!-- ================================================================
+     REPISA — COLLECTION PAGE
+     Collection listing with filters
+     ================================================================ -->
+
+<div class="collection-page">
+  <!-- COLLECTION HERO -->
+  <div class="collection-hero">
+    <span class="text-uppercase">Colección</span>
+    <h1>{{ collection.title }}</h1>
+    {% if collection.description != blank %}
+      <p>{{ collection.description }}</p>
+    {% endif %}
+  </div>
+
+  <div class="container">
+    <!-- COLLECTION TOOLBAR -->
+    <div class="collection-toolbar">
+      <span class="collection-count">{{ collection.products_count }} productos</span>
+      
+      <div class="collection-filters">
+        <button class="collection-filter active" onclick="filterProducts('all')">Todos</button>
+        {% for tag in collection.all_tags limit: 5 %}
+          <button class="collection-filter" onclick="filterProducts('{{ tag | handle }}')">{{ tag }}</button>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- PRODUCT GRID -->
+    <div class="product-grid" id="product-grid">
+      {% for product in collection.products %}
+        <div class="product-grid-item" data-tags="{{ product.tags | join: ',' | handle }}">
+          {% render 'product-card', product: product %}
+        </div>
+      {% endfor %}
+    </div>
+
+    {% if collection.products_count == 0 %}
+      <div class="text-center" style="padding: 96px 0;">
+        <h3>No hay productos en esta colección</h3>
+        <p style="margin-top: 16px;">Explora nuestras otras colecciones o busca lo que necesitas.</p>
+        <a href="/collections" class="btn btn-secondary" style="margin-top: 24px;">Ver Todas las Colecciones</a>
+      </div>
+    {% endif %}
+
+    <!-- PAGINATION -->
+    {% if paginate.pages > 1 %}
+      <div class="text-center mt-2xl">
+        {% if paginate.previous %}
+          <a href="{{ paginate.previous.url }}" class="btn btn-secondary" style="margin-right: 8px;">← Anterior</a>
+        {% endif %}
+        
+        {% for part in paginate.parts %}
+          {% if part.is_link %}
+            <a href="{{ part.url }}" class="btn btn-secondary" style="margin: 0 4px;">{{ part.title }}</a>
+          {% elsif part.title == paginate.current_page %}
+            <span class="btn btn-primary" style="margin: 0 4px;">{{ part.title }}</span>
+          {% else %}
+            <span style="margin: 0 4px;">{{ part.title }}</span>
+          {% endif %}
+        {% endfor %}
+        
+        {% if paginate.next %}
+          <a href="{{ paginate.next.url }}" class="btn btn-secondary" style="margin-left: 8px;">Siguiente →</a>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<script>
+function filterProducts(tag) {
+  const items = document.querySelectorAll('.product-grid-item');
+  const buttons = document.querySelectorAll('.collection-filter');
+  
+  buttons.forEach(btn => btn.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  
+  items.forEach(item => {
+    if (tag === 'all') {
+      item.style.display = 'block';
+    } else {
+      const tags = item.dataset.tags;
+      if (tags.includes(tag)) {
+        item.style.display = 'block';
+      } else {
+        item.style.display = 'none';
+      }
+    }
+  });
+}
+</script>

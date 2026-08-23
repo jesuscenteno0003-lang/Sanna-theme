@@ -1,11 +1,11 @@
 {
   "sections": {
-    "serenne-product": {
-      "type": "serenne-product",
+    "repisa-product": {
+      "type": "repisa-product",
       "settings": {}
     }
   },
   "order": [
-    "serenne-product"
+    "repisa-product"
   ]
 }

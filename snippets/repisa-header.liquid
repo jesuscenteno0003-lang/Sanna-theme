@@ -1,0 +1,84 @@
+<!-- ================================================================
+     REPISA — HEADER
+     Multi-brand beauty marketplace
+     ================================================================ -->
+
+<header class="repisa-header">
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="repisa-announcement">
+    Envío gratis en pedidos +S/.200 | 3 cuotas sin interés con Tarjeta Repisa
+  </div>
+  
+  <div class="header-inner">
+    <!-- LOGO -->
+    <a href="/" class="header-logo">REPISA</a>
+    
+    <!-- NAVIGATION -->
+    <nav class="header-nav">
+      <a href="/collections/novedades">Novedades</a>
+      <a href="/collections/skincare">Skincare</a>
+      <a href="/collections/maquillaje">Maquillaje</a>
+      <a href="/collections/fragancias">Fragancias</a>
+      <a href="/collections/cuidado-capilar">Cuidado Capilar</a>
+      <a href="/collections/accesorios">Accesorios</a>
+      <a href="/collections/marcas">Marcas</a>
+      <a href="/collections/sale">SALE</a>
+    </nav>
+    
+    <!-- ICONS -->
+    <div class="header-icons">
+      <button class="header-icon" aria-label="Buscar" onclick="openSearch()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="m21 21-4.35-4.35"/>
+        </svg>
+      </button>
+      <a href="/account" class="header-icon" aria-label="Mi cuenta">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
+      </a>
+      <a href="/pages/wishlist" class="header-icon" aria-label="Favoritos">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+        </svg>
+      </a>
+      <button class="header-icon" aria-label="Carrito" onclick="openCart()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 0 1-8 0"/>
+        </svg>
+        <span id="cart-icon-count" style="position: absolute; top: -4px; right: -8px; background: var(--r-gold); color: var(--r-black); font-size: 0.625rem; width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; display: none;"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<script>
+// Update cart icon count
+function updateCartIconCount() {
+  fetch('/cart.js')
+    .then(res => res.json())
+    .then(data => {
+      const countEl = document.getElementById('cart-icon-count');
+      if (data.item_count > 0) {
+        countEl.textContent = data.item_count;
+        countEl.style.display = 'flex';
+      } else {
+        countEl.style.display = 'none';
+      }
+    });
+}
+
+// Update on load
+document.addEventListener('DOMContentLoaded', updateCartIconCount);
+
+// Update after cart changes
+const observer = new MutationObserver(() => {
+  if (typeof cart !== 'undefined') {
+    updateCartIconCount();
+  }
+});
+</script>

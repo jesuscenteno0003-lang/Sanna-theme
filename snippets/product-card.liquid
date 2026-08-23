@@ -1,0 +1,37 @@
+<!-- ================================================================
+     REPISA — PRODUCT CARD
+     Reusable product card component
+     ================================================================ -->
+
+<div class="product-card">
+  <a href="{{ product.url }}" class="product-card-image">
+    {% if product.featured_image %}
+      <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.featured_image.alt | escape }}" loading="lazy">
+    {% else %}
+      <img src="{{ 'imagendeprueba.jpg' | asset_url }}" alt="{{ product.title | escape }}" loading="lazy">
+    {% endif %}
+    
+    {% if product.vendor != blank %}
+      <span class="product-card-vendor">{{ product.vendor }}</span>
+    {% endif %}
+    
+    <span class="product-card-quick-add">Agregar al Carrito</span>
+  </a>
+  
+  <div class="product-card-info">
+    {% if product.vendor != blank %}
+      <p class="product-card-vendor-name">{{ product.vendor }}</p>
+    {% endif %}
+    
+    <h3 class="product-card-title">
+      <a href="{{ product.url }}">{{ product.title }}</a>
+    </h3>
+    
+    <div class="product-card-price">
+      {% if product.compare_at_price > product.price %}
+        <span class="price-compare">{{ product.compare_at_price | money }}</span>
+      {% endif %}
+      <span>{{ product.price | money }}</span>
+    </div>
+  </div>
+</div>

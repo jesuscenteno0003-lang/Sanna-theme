@@ -1,0 +1,147 @@
+<!-- ================================================================
+     REPISA — PRODUCT PAGE
+     Single product detail page
+     ================================================================ -->
+
+<div class="product-page">
+  <!-- PRODUCT GALLERY -->
+  <div class="product-gallery">
+    <div class="product-gallery-main">
+      {% if product.featured_image %}
+        <img src="{{ product.featured_image | image_url: width: 800 }}" alt="{{ product.featured_image.alt | escape }}" id="main-product-image">
+      {% endif %}
+    </div>
+    
+    {% if product.images.size > 1 %}
+      <div class="product-gallery-thumbs">
+        {% for image in product.images limit: 4 %}
+          <div class="product-thumb {% if forloop.first %}active{% endif %}" onclick="changeImage('{{ image | image_url: width: 800 }}')">
+            <img src="{{ image | image_url: width: 200 }}" alt="{{ image.alt | escape }}">
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+
+  <!-- PRODUCT INFO -->
+  <div class="product-info">
+    {% if product.vendor != blank %}
+      <p class="product-vendor">{{ product.vendor }}</p>
+    {% endif %}
+    
+    <h1 class="product-title">{{ product.title }}</h1>
+    
+    <div class="product-price">
+      {% if product.compare_at_price > product.price %}
+        <span class="price-compare" style="text-decoration: line-through; color: var(--r-gray-400); margin-right: 8px;">{{ product.compare_at_price | money }}</span>
+      {% endif %}
+      <span>{{ product.price | money }}</span>
+    </div>
+
+    {% form 'product', product, class: 'product-form' %}
+      {% unless product.has_only_default_variant %}
+        {% for option in product.options_with_values %}
+          <div class="product-option">
+            <label class="product-option-label">{{ option.name }}</label>
+            <div class="product-option-values">
+              {% for value in option.values %}
+                <button type="button" class="product-option-value {% if option.selected_value == value %}active{% endif %}" onclick="selectOption(this, '{{ option.name }}', '{{ value }}')" data-value="{{ value }}">
+                  {{ value }}
+                </button>
+              {% endfor %}
+            </div>
+            <input type="hidden" name="options[{{ option.name }}]" value="{{ option.selected_value }}">
+          </div>
+        {% endfor %}
+      {% endunless %}
+      
+      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+      
+      <button type="submit" class="product-add-to-cart">
+        {% if product.selected_or_first_available_variant.available %}
+          AGREGAR AL CARRITO — {{ product.price | money }}
+        {% else %}
+          AGOTADO
+        {% endif %}
+      </button>
+    {% endform %}
+
+    <div class="product-description">
+      {{ product.description }}
+    </div>
+
+    <!-- META INFO -->
+    <div class="product-meta">
+      <div class="product-meta-item">
+        <div class="product-meta-title" onclick="toggleMeta(this)">
+          <span>Ingredientes Principales</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 9l6 6 6-6"/>
+          </svg>
+        </div>
+        <div class="product-meta-content" style="display: none;">
+          {% if product.metafields.custom.ingredients %}
+            {{ product.metafields.custom.ingredients }}
+          {% else %}
+            Consulta la lista de ingredientes en el empaque del producto.
+          {% endif %}
+        </div>
+      </div>
+      
+      <div class="product-meta-item">
+        <div class="product-meta-title" onclick="toggleMeta(this)">
+          <span>Cómo Usar</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 9l6 6 6-6"/>
+          </svg>
+        </div>
+        <div class="product-meta-content" style="display: none;">
+          {% if product.metafields.custom.how_to_use %}
+            {{ product.metafields.custom.how_to_use }}
+          {% else %}
+            Sigue las instrucciones de uso indicadas en el empaque.
+          {% endif %}
+        </div>
+      </div>
+      
+      <div class="product-meta-item">
+        <div class="product-meta-title" onclick="toggleMeta(this)">
+          <span>Envío y Devoluciones</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 9l6 6 6-6"/>
+          </svg>
+        </div>
+        <div class="product-meta-content" style="display: none;">
+          Envío gratis en pedidos superiores a S/.200. Tiempo de entrega: 2-5 días hábiles en Lima, 5-10 días en provincia. Devoluciones dentro de 30 días.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function changeImage(src) {
+  document.getElementById('main-product-image').src = src;
+  document.querySelectorAll('.product-thumb').forEach(t => t.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+}
+
+function selectOption(btn, name, value) {
+  const container = btn.closest('.product-option');
+  container.querySelectorAll('.product-option-value').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  container.querySelector('input[type="hidden"]').value = value;
+}
+
+function toggleMeta(el) {
+  const content = el.nextElementSibling;
+  const icon = el.querySelector('svg');
+  if (content.style.display === 'none') {
+    content.style.display = 'block';
+    icon.style.transform = 'rotate(180deg)';
+  } else {
+    content.style.display = 'none';
+    icon.style.transform = 'rotate(0)';
+  }
+}
+</script>

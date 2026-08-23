@@ -1,63 +1,55 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "repisa-homepage": {
       "type": "repisa-homepage",
       "name": "REPISA Homepage",
       "settings": {
-        "hero_title": "Tu estante de belleza",
-        "hero_subtitle": "Marcas premium curadas para tu rutina de belleza",
-        "hero_cta_text": "Explorar Colecciones",
-        "hero_cta_link": "/collections",
-        "hero_bg_color": "#1a1a1a",
-        "show_brand_marquee": true,
-        "featured_title": "Explora por Categoría",
-        "featured_subtitle": "Encuentra lo que necesitas",
-        "products_title": "Más Vendidos",
-        "newsletter_title": "Únete a REPISA",
-        "newsletter_subtitle": "Recibe ofertas exclusivas y novedades de belleza"
+        "hero_subtitle": "Nueva Colección",
+        "hero_title": "Tu estante de belleza curado",
+        "hero_description": "Descubre las mejores marcas de skincare, maquillaje y fragancias. Envío gratis en pedidos +S/.200.",
+        "hero_button_text": "Explorar Colecciones",
+        "hero_secondary_text": "Nuestras Marcas",
+        "featured_title": "Favoritos de Nuestra Comunidad"
       },
       "blocks": {
-        "brand-1": {
-          "type": "brand",
+        "collection-1": {
+          "type": "collection",
           "settings": {
-            "brand_name": "SKINCARE"
+            "title": "Skincare"
           }
         },
-        "brand-2": {
-          "type": "brand",
+        "collection-2": {
+          "type": "collection",
           "settings": {
-            "brand_name": "MAQUILLAJE"
+            "title": "Maquillaje"
           }
         },
-        "brand-3": {
-          "type": "brand",
+        "collection-3": {
+          "type": "collection",
           "settings": {
-            "brand_name": "FRAGANCIAS"
+            "title": "Fragancias"
           }
         },
-        "brand-4": {
-          "type": "brand",
+        "collection-4": {
+          "type": "collection",
           "settings": {
-            "brand_name": "CUIDADO CAPILAR"
+            "title": "Cuidado Capilar"
           }
         },
-        "brand-5": {
-          "type": "brand",
+        "collection-5": {
+          "type": "collection",
           "settings": {
-            "brand_name": "ACCESORIOS"
+            "title": "Accesorios"
+          }
+        },
+        "collection-6": {
+          "type": "collection",
+          "settings": {
+            "title": "SALE"
           }
         }
       },
-      "block_order": ["brand-1", "brand-2", "brand-3", "brand-4", "brand-5"]
+      "block_order": ["collection-1", "collection-2", "collection-3", "collection-4", "collection-5", "collection-6"]
     }
   },
   "order": [

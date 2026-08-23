@@ -1,118 +1,180 @@
-{{ 'repisa-homepage.css' | asset_url | stylesheet_tag }}
+<!-- ================================================================
+     REPISA — HOMEPAGE
+     Multi-brand beauty marketplace
+     ================================================================ -->
 
 <div class="repisa-homepage">
-  <!-- Hero Section -->
-  <section class="repisa-hero" style="background-color: {{ section.settings.hero_bg_color }};">
-    <div class="repisa-hero__content">
-      <h1 class="repisa-hero__title">{{ section.settings.hero_title }}</h1>
-      <p class="repisa-hero__subtitle">{{ section.settings.hero_subtitle }}</p>
-      <a href="{{ section.settings.hero_cta_link }}" class="repisa-hero__cta">
-        {{ section.settings.hero_cta_text }}
-      </a>
+  <!-- HERO SECTION -->
+  <section class="repisa-hero">
+    <div class="repisa-hero-bg">
+      {% if section.settings.hero_image %}
+        <img src="{{ section.settings.hero_image | image_url: width: 1920 }}" alt="{{ section.settings.hero_title }}" loading="eager">
+      {% else %}
+        <img src="{{ 'hero-bg.webp' | asset_url }}" alt="REPISA Belleza" loading="eager">
+      {% endif %}
+    </div>
+    <div class="repisa-hero-overlay"></div>
+    <div class="repisa-hero-content">
+      {% if section.settings.hero_subtitle != blank %}
+        <span class="text-uppercase">{{ section.settings.hero_subtitle }}</span>
+      {% endif %}
+      {% if section.settings.hero_title != blank %}
+        <h1>{{ section.settings.hero_title }}</h1>
+      {% endif %}
+      {% if section.settings.hero_description != blank %}
+        <p>{{ section.settings.hero_description }}</p>
+      {% endif %}
+      <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+        <a href="{{ section.settings.hero_button_url | default: '/collections' }}" class="btn btn-gold">
+          {{ section.settings.hero_button_text | default: 'Explorar Colecciones' }}
+        </a>
+        <a href="{{ section.settings.hero_secondary_url | default: '/pages/nuestras-marcas' }}" class="btn btn-white">
+          {{ section.settings.hero_secondary_text | default: 'Nuestras Marcas' }}
+        </a>
+      </div>
     </div>
   </section>
 
-  <!-- Brand Marquee -->
-  {% if section.settings.show_brand_marquee %}
-    <section class="repisa-marquee">
-      <div class="repisa-marquee__track">
-        {% for block in section.blocks %}
-          {% if block.type == 'brand' %}
-            <span class="repisa-marquee__item">{{ block.settings.brand_name }}</span>
+  <!-- BRAND MARQUEE -->
+  <section class="brand-marquee">
+    <div class="brand-marquee-track">
+      <span class="brand-marquee-item">La Roche-Posay</span>
+      <span class="brand-marquee-item">CeraVe</span>
+      <span class="brand-marquee-item">The Ordinary</span>
+      <span class="brand-marquee-item">Paula's Choice</span>
+      <span class="brand-marquee-item">Drunk Elephant</span>
+      <span class="brand-marquee-item">Tatcha</span>
+      <span class="brand-marquee-item">Glossier</span>
+      <span class="brand-marquee-item">Charlotte Tilbury</span>
+      <span class="brand-marquee-item">Rare Beauty</span>
+      <span class="brand-marquee-item">Sol de Janeiro</span>
+      <!-- Duplicated for seamless loop -->
+      <span class="brand-marquee-item">La Roche-Posay</span>
+      <span class="brand-marquee-item">CeraVe</span>
+      <span class="brand-marquee-item">The Ordinary</span>
+      <span class="brand-marquee-item">Paula's Choice</span>
+      <span class="brand-marquee-item">Drunk Elephant</span>
+      <span class="brand-marquee-item">Tatcha</span>
+      <span class="brand-marquee-item">Glossier</span>
+      <span class="brand-marquee-item">Charlotte Tilbury</span>
+      <span class="brand-marquee-item">Rare Beauty</span>
+      <span class="brand-marquee-item">Sol de Janeiro</span>
+    </div>
+  </section>
+
+  <!-- FEATURED COLLECTIONS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="text-uppercase">Explora por Categoría</span>
+        <h2>Encuentra tu ritual</h2>
+      </div>
+      
+      <div class="collection-grid">
+        {% for block in section.blocks limit: 6 %}
+          {% if block.type == 'collection' %}
+            <a href="{{ block.settings.collection.url }}" class="collection-card" {{ block.shopify_attributes }}>
+              {% if block.settings.image %}
+                <img src="{{ block.settings.image | image_url: width: 600 }}" alt="{{ block.settings.title }}" loading="lazy">
+              {% elsif block.settings.collection.image %}
+                <img src="{{ block.settings.collection.image | image_url: width: 600 }}" alt="{{ block.settings.collection.title }}" loading="lazy">
+              {% endif %}
+              <div class="collection-card-overlay">
+                <h3 class="collection-card-title">{{ block.settings.title | default: block.settings.collection.title }}</h3>
+                <span class="collection-card-count">{{ block.settings.collection.products_count }} productos</span>
+              </div>
+            </a>
           {% endif %}
         {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED PRODUCTS -->
+  {% assign featured_collection = collections[section.settings.featured_collection] %}
+  {% if featured_collection != blank %}
+    <section class="section section-cream">
+      <div class="container">
+        <div class="section-header">
+          <span class="text-uppercase">Lo Más Popular</span>
+          <h2>{{ section.settings.featured_title | default: 'Favoritos de Nuestra Comunidad' }}</h2>
+          <p>{{ section.settings.featured_description | default: 'Los productos que nuestros clientes aman y recomiendan.' }}</p>
+        </div>
+        
+        <div class="product-grid">
+          {% for product in featured_collection.products limit: 8 %}
+            {% render 'product-card', product: product %}
+          {% endfor %}
+        </div>
+        
+        <div class="text-center mt-2xl">
+          <a href="{{ featured_collection.url }}" class="btn btn-secondary">Ver Todos los Productos</a>
+        </div>
       </div>
     </section>
   {% endif %}
 
-  <!-- Featured Collections -->
-  <section class="repisa-featured">
-    <div class="repisa-featured__header">
-      <h2 class="repisa-featured__title">{{ section.settings.featured_title }}</h2>
-      <p class="repisa-featured__subtitle">{{ section.settings.featured_subtitle }}</p>
-    </div>
-    <div class="repisa-featured__grid">
-      {% for block in section.blocks %}
-        {% if block.type == 'collection' %}
-          <a href="{{ block.settings.collection.url }}" class="repisa-featured__card" {{ block.shopify_attributes }}>
-            <div class="repisa-featured__image">
-              {% if block.settings.collection.image %}
-                <img src="{{ block.settings.collection.image | image_url: width: 600 }}" 
-                     alt="{{ block.settings.collection.title }}"
-                     loading="lazy">
-              {% else %}
-                <div class="repisa-featured__placeholder"></div>
-              {% endif %}
-            </div>
-            <h3 class="repisa-featured__card-title">{{ block.settings.collection.title }}</h3>
-          </a>
-        {% endif %}
-      {% endfor %}
-    </div>
-  </section>
-
-  <!-- Benefits Banner -->
-  <section class="repisa-benefits">
-    <div class="repisa-benefits__grid">
-      <div class="repisa-benefits__item">
-        <span class="repisa-benefits__icon">✦</span>
-        <span class="repisa-benefits__text">Envío Gratis +S/.200</span>
-      </div>
-      <div class="repisa-benefits__item">
-        <span class="repisa-benefits__icon">✦</span>
-        <span class="repisa-benefits__text">Productos 100% Originales</span>
-      </div>
-      <div class="repisa-benefits__item">
-        <span class="repisa-benefits__icon">✦</span>
-        <span class="repisa-benefits__text">Hasta 3 Cuotas Sin Interés</span>
-      </div>
-      <div class="repisa-benefits__item">
-        <span class="repisa-benefits__icon">✦</span>
-        <span class="repisa-benefits__text">Asesoría de Belleza</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Featured Products -->
-  <section class="repisa-products">
-    <div class="repisa-products__header">
-      <h2 class="repisa-products__title">{{ section.settings.products_title }}</h2>
-      <a href="/collections/all" class="repisa-products__view-all">Ver Todo →</a>
-    </div>
-    <div class="repisa-products__grid">
-      {% for product in section.settings.featured_collection.products limit: 8 %}
-        <div class="repisa-product-card" {{ product.shopify_attributes }}>
-          <a href="{{ product.url }}" class="repisa-product-card__link">
-            <div class="repisa-product-card__image">
-              <img src="{{ product.featured_image | image_url: width: 400 }}" 
-                   alt="{{ product.title }}"
-                   loading="lazy">
-            </div>
-            <div class="repisa-product-card__info">
-              <span class="repisa-product-card__vendor">{{ product.vendor }}</span>
-              <h3 class="repisa-product-card__title">{{ product.title }}</h3>
-              <div class="repisa-product-card__price">
-                {{ product.price | money }}
-              </div>
-            </div>
-          </a>
+  <!-- VALUE PROPOSITIONS -->
+  <section class="section">
+    <div class="container">
+      <div class="value-props">
+        <div class="value-prop">
+          <div class="value-prop-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </div>
+          <h4 class="value-prop-title">Envío Gratis</h4>
+          <p class="value-prop-text">En todos los pedidos superiores a S/.200</p>
         </div>
-      {% endfor %}
+        
+        <div class="value-prop">
+          <div class="value-prop-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
+          </div>
+          <h4 class="value-prop-title">100% Auténtico</h4>
+          <p class="value-prop-text">Solo marcas originales y verificadas</p>
+        </div>
+        
+        <div class="value-prop">
+          <div class="value-prop-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+            </svg>
+          </div>
+          <h4 class="value-prop-title">3 Cuotas Sin Interés</h4>
+          <p class="value-prop-text">Paga cómodo con Tarjeta Repisa</p>
+        </div>
+        
+        <div class="value-prop">
+          <div class="value-prop-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+            </svg>
+          </div>
+          <h4 class="value-prop-title">Devolución Fácil</h4>
+          <p class="value-prop-text">30 días para cambios sin preguntas</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Newsletter -->
-  <section class="repisa-newsletter">
-    <div class="repisa-newsletter__content">
-      <h2 class="repisa-newsletter__title">{{ section.settings.newsletter_title }}</h2>
-      <p class="repisa-newsletter__subtitle">{{ section.settings.newsletter_subtitle }}</p>
-      {% form 'customer' %}
+  <!-- NEWSLETTER -->
+  <section class="newsletter">
+    <div class="container">
+      <span class="text-uppercase" style="color: var(--r-gold);">Únete al Club</span>
+      <h2>Beauty Club REPISA</h2>
+      <p>Acceso anticipado a lanzamientos, descuentos exclusivos y contenido de belleza directo a tu correo.</p>
+      
+      <form class="newsletter-form" action="/contact#newsletter" method="post">
+        <input type="hidden" name="form_type" value="customer">
+        <input type="hidden" name="utf8" value="✓">
         <input type="hidden" name="contact[tags]" value="newsletter">
-        <div class="repisa-newsletter__form">
-          <input type="email" name="contact[email]" placeholder="Tu email" required>
-          <button type="submit">Suscribirme</button>
-        </div>
-      {% endform %}
+        <input type="email" name="contact[email]" class="newsletter-input" placeholder="Tu correo electrónico" required>
+        <button type="submit" class="newsletter-submit">Suscribirme</button>
+      </form>
     </div>
   </section>
 </div>
@@ -120,75 +182,53 @@
 {% schema %}
 {
   "name": "REPISA Homepage",
+  "tag": "section",
+  "class": "section",
   "settings": [
     {
-      "type": "header",
-      "content": "Hero"
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Background Image"
+    },
+    {
+      "type": "text",
+      "id": "hero_subtitle",
+      "label": "Hero Subtitle",
+      "default": "Nueva Colección"
     },
     {
       "type": "text",
       "id": "hero_title",
       "label": "Hero Title",
-      "default": "Tu estante de belleza"
+      "default": "Tu estante de belleza curado"
     },
     {
       "type": "textarea",
-      "id": "hero_subtitle",
-      "label": "Hero Subtitle",
-      "default": "Marcas premium curadas para tu rutina de belleza"
+      "id": "hero_description",
+      "label": "Hero Description",
+      "default": "Descubre las mejores marcas de skincare, maquillaje y fragancias. Envío gratis en pedidos +S/.200."
     },
     {
       "type": "text",
-      "id": "hero_cta_text",
-      "label": "CTA Text",
+      "id": "hero_button_text",
+      "label": "Hero Button Text",
       "default": "Explorar Colecciones"
     },
     {
       "type": "url",
-      "id": "hero_cta_link",
-      "label": "CTA Link"
-    },
-    {
-      "type": "color",
-      "id": "hero_bg_color",
-      "label": "Hero Background Color",
-      "default": "#1a1a1a"
-    },
-    {
-      "type": "header",
-      "content": "Brand Marquee"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_brand_marquee",
-      "label": "Show Brand Marquee",
-      "default": true
-    },
-    {
-      "type": "header",
-      "content": "Featured Collections"
+      "id": "hero_button_url",
+      "label": "Hero Button URL"
     },
     {
       "type": "text",
-      "id": "featured_title",
-      "label": "Featured Title",
-      "default": "Explora por Categoría"
+      "id": "hero_secondary_text",
+      "label": "Hero Secondary Button Text",
+      "default": "Nuestras Marcas"
     },
     {
-      "type": "text",
-      "id": "featured_subtitle",
-      "label": "Featured Subtitle",
-      "default": "Encuentra lo que necesitas"
-    },
-    {
-      "type": "header",
-      "content": "Products"
-    },
-    {
-      "type": "text",
-      "id": "products_title",
-      "label": "Products Title",
-      "default": "Más Vendidos"
+      "type": "url",
+      "id": "hero_secondary_url",
+      "label": "Hero Secondary Button URL"
     },
     {
       "type": "collection",
@@ -196,42 +236,37 @@
       "label": "Featured Collection"
     },
     {
-      "type": "header",
-      "content": "Newsletter"
-    },
-    {
       "type": "text",
-      "id": "newsletter_title",
-      "label": "Newsletter Title",
-      "default": "Únete a REPISA"
+      "id": "featured_title",
+      "label": "Featured Section Title",
+      "default": "Favoritos de Nuestra Comunidad"
     },
     {
       "type": "textarea",
-      "id": "newsletter_subtitle",
-      "label": "Newsletter Subtitle",
-      "default": "Recibe ofertas exclusivas y novedades de belleza"
+      "id": "featured_description",
+      "label": "Featured Section Description",
+      "default": "Los productos que nuestros clientes aman y recomiendan."
     }
   ],
   "blocks": [
     {
-      "type": "brand",
-      "name": "Brand",
-      "settings": [
-        {
-          "type": "text",
-          "id": "brand_name",
-          "label": "Brand Name"
-        }
-      ]
-    },
-    {
       "type": "collection",
-      "name": "Collection",
+      "name": "Collection Card",
       "settings": [
         {
           "type": "collection",
           "id": "collection",
           "label": "Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Custom Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Custom Title"
         }
       ]
     }
@@ -241,27 +276,18 @@
       "name": "REPISA Homepage",
       "blocks": [
         {
-          "type": "brand",
+          "type": "collection",
           "settings": {
-            "brand_name": "SKINCARE"
           }
         },
         {
-          "type": "brand",
+          "type": "collection",
           "settings": {
-            "brand_name": "MAQUILLAJE"
           }
         },
         {
-          "type": "brand",
+          "type": "collection",
           "settings": {
-            "brand_name": "FRAGANCIAS"
-          }
-        },
-        {
-          "type": "brand",
-          "settings": {
-            "brand_name": "CUIDADO CAPILAR"
           }
         }
       ]
