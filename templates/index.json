@@ -15,37 +15,43 @@
         "collection-1": {
           "type": "collection",
           "settings": {
-            "title": "Skincare"
+            "title": "Skincare",
+            "collection": "skincare"
           }
         },
         "collection-2": {
           "type": "collection",
           "settings": {
-            "title": "Maquillaje"
+            "title": "Maquillaje",
+            "collection": "maquillaje"
           }
         },
         "collection-3": {
           "type": "collection",
           "settings": {
-            "title": "Fragancias"
+            "title": "Fragancias",
+            "collection": "fragancias"
           }
         },
         "collection-4": {
           "type": "collection",
           "settings": {
-            "title": "Cuidado Capilar"
+            "title": "Cuidado Capilar",
+            "collection": "cuidado-capilar"
           }
         },
         "collection-5": {
           "type": "collection",
           "settings": {
-            "title": "Accesorios"
+            "title": "Accesorios",
+            "collection": "accesorios"
           }
         },
         "collection-6": {
           "type": "collection",
           "settings": {
-            "title": "SALE"
+            "title": "SALE",
+            "collection": "sale"
           }
         }
       },

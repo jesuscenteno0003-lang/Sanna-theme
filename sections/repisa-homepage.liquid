@@ -10,7 +10,7 @@
       {% if section.settings.hero_image %}
         <img src="{{ section.settings.hero_image | image_url: width: 1920 }}" alt="{{ section.settings.hero_title }}" loading="eager">
       {% else %}
-        <img src="{{ 'hero-bg.webp' | asset_url }}" alt="REPISA Belleza" loading="eager">
+        <img src="{{ 'hero-bg.svg' | asset_url }}" alt="REPISA Belleza" loading="eager">
       {% endif %}
     </div>
     <div class="repisa-hero-overlay"></div>
@@ -73,15 +73,20 @@
       <div class="collection-grid">
         {% for block in section.blocks limit: 6 %}
           {% if block.type == 'collection' %}
-            <a href="{{ block.settings.collection.url }}" class="collection-card" {{ block.shopify_attributes }}>
-              {% if block.settings.image %}
-                <img src="{{ block.settings.image | image_url: width: 600 }}" alt="{{ block.settings.title }}" loading="lazy">
-              {% elsif block.settings.collection.image %}
-                <img src="{{ block.settings.collection.image | image_url: width: 600 }}" alt="{{ block.settings.collection.title }}" loading="lazy">
-              {% endif %}
+            {% assign coll = collections[block.settings.collection] %}
+            {% assign img_src = '' %}
+            {% if block.settings.image %}
+              {% assign img_src = block.settings.image | image_url: width: 600 %}
+            {% elsif coll.image %}
+              {% assign img_src = coll.image | image_url: width: 600 %}
+            {% else %}
+              {% assign img_src = 'collection-' | append: block.settings.collection | append: '.svg' | asset_url %}
+            {% endif %}
+            <a href="/collections/{{ block.settings.collection }}" class="collection-card" {{ block.shopify_attributes }}>
+              <img src="{{ img_src }}" alt="{{ block.settings.title }}" loading="lazy">
               <div class="collection-card-overlay">
-                <h3 class="collection-card-title">{{ block.settings.title | default: block.settings.collection.title }}</h3>
-                <span class="collection-card-count">{{ block.settings.collection.products_count }} productos</span>
+                <h3 class="collection-card-title">{{ block.settings.title | default: coll.title }}</h3>
+                <span class="collection-card-count">{{ coll.products_count }} productos</span>
               </div>
             </a>
           {% endif %}
