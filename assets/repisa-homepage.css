@@ -1,0 +1,380 @@
+/* REPISA Homepage Styles */
+
+.repisa-homepage {
+  width: 100%;
+}
+
+/* Hero Section */
+.repisa-hero {
+  background-color: #1a1a1a;
+  color: #faf9f6;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.repisa-hero__content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.repisa-hero__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 400;
+  margin: 0 0 20px;
+  letter-spacing: 0.02em;
+}
+
+.repisa-hero__subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.125rem;
+  margin: 0 0 30px;
+  opacity: 0.9;
+  font-weight: 300;
+}
+
+.repisa-hero__cta {
+  display: inline-block;
+  background-color: #c9a96e;
+  color: #1a1a1a;
+  padding: 14px 40px;
+  text-decoration: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.repisa-hero__cta:hover {
+  background-color: #faf9f6;
+}
+
+/* Brand Marquee */
+.repisa-marquee {
+  background-color: #faf9f6;
+  padding: 20px 0;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.1);
+}
+
+.repisa-marquee__track {
+  display: flex;
+  gap: 60px;
+  animation: marquee 20s linear infinite;
+  white-space: nowrap;
+}
+
+.repisa-marquee__item {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  opacity: 0.6;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Featured Collections */
+.repisa-featured {
+  padding: 80px 20px;
+  background-color: #faf9f6;
+}
+
+.repisa-featured__header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.repisa-featured__title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 400;
+  margin: 0 0 10px;
+  color: #1a1a1a;
+}
+
+.repisa-featured__subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  color: #1a1a1a;
+  opacity: 0.7;
+  margin: 0;
+}
+
+.repisa-featured__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.repisa-featured__card {
+  text-decoration: none;
+  color: #1a1a1a;
+  transition: transform 0.3s ease;
+}
+
+.repisa-featured__card:hover {
+  transform: translateY(-4px);
+}
+
+.repisa-featured__image {
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  background-color: #f5f0eb;
+  margin-bottom: 15px;
+}
+
+.repisa-featured__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.repisa-featured__placeholder {
+  width: 100%;
+  height: 100%;
+  background-color: #f5f0eb;
+}
+
+.repisa-featured__card-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 0;
+  text-align: center;
+}
+
+/* Benefits Banner */
+.repisa-benefits {
+  background-color: #c9a96e;
+  padding: 30px 20px;
+}
+
+.repisa-benefits__grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.repisa-benefits__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.repisa-benefits__icon {
+  font-size: 0.75rem;
+}
+
+.repisa-benefits__text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: #1a1a1a;
+}
+
+/* Featured Products */
+.repisa-products {
+  padding: 80px 20px;
+  background-color: #faf9f6;
+}
+
+.repisa-products__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto 40px;
+}
+
+.repisa-products__title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.75rem;
+  font-weight: 400;
+  margin: 0;
+  color: #1a1a1a;
+}
+
+.repisa-products__view-all {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.875rem;
+  color: #1a1a1a;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: opacity 0.3s ease;
+}
+
+.repisa-products__view-all:hover {
+  opacity: 0.7;
+}
+
+.repisa-products__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Product Card */
+.repisa-product-card {
+  background-color: #faf9f6;
+}
+
+.repisa-product-card__link {
+  text-decoration: none;
+  color: #1a1a1a;
+}
+
+.repisa-product-card__image {
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  background-color: #f5f0eb;
+  margin-bottom: 15px;
+}
+
+.repisa-product-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.repisa-product-card:hover .repisa-product-card__image img {
+  transform: scale(1.03);
+}
+
+.repisa-product-card__info {
+  padding: 0 5px;
+}
+
+.repisa-product-card__vendor {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.6875rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.repisa-product-card__title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 400;
+  margin: 0 0 8px;
+  line-height: 1.4;
+}
+
+.repisa-product-card__price {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+
+/* Newsletter */
+.repisa-newsletter {
+  background-color: #1a1a1a;
+  color: #faf9f6;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.repisa-newsletter__content {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.repisa-newsletter__title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 400;
+  margin: 0 0 10px;
+}
+
+.repisa-newsletter__subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  opacity: 0.8;
+  margin: 0 0 30px;
+}
+
+.repisa-newsletter__form {
+  display: flex;
+  gap: 10px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.repisa-newsletter__form input[type="email"] {
+  flex: 1;
+  padding: 14px 20px;
+  border: none;
+  background-color: #faf9f6;
+  color: #1a1a1a;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.875rem;
+}
+
+.repisa-newsletter__form input[type="email"]::placeholder {
+  color: rgba(26, 26, 26, 0.5);
+}
+
+.repisa-newsletter__form button {
+  padding: 14px 30px;
+  border: none;
+  background-color: #c9a96e;
+  color: #1a1a1a;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.repisa-newsletter__form button:hover {
+  background-color: #faf9f6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .repisa-hero {
+    padding: 60px 20px;
+  }
+
+  .repisa-benefits__grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .repisa-products__header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .repisa-newsletter__form {
+    flex-direction: column;
+  }
+}

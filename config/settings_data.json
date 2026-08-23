@@ -1,70 +1,70 @@
 {
-  "current": "Serenne",
+  "current": "REPISA",
   "presets": {
-    "Serenne": {
-      "logo_width": 120,
+    "REPISA": {
+      "logo_width": 140,
       "color_schemes": {
         "scheme-1": {
           "settings": {
-            "background": "#FFFEF9",
+            "background": "#faf9f6",
             "background_gradient": "",
-            "text": "#292524",
-            "button": "#292524",
-            "button_label": "#FFFEF9",
-            "secondary_button_label": "#292524",
-            "shadow": "#292524"
+            "text": "#1a1a1a",
+            "button": "#1a1a1a",
+            "button_label": "#faf9f6",
+            "secondary_button_label": "#1a1a1a",
+            "shadow": "#1a1a1a"
           }
         },
         "scheme-2": {
           "settings": {
-            "background": "#F5F0EB",
+            "background": "#f5f0eb",
             "background_gradient": "",
-            "text": "#292524",
-            "button": "#292524",
-            "button_label": "#F5F0EB",
-            "secondary_button_label": "#292524",
-            "shadow": "#292524"
+            "text": "#1a1a1a",
+            "button": "#c9a96e",
+            "button_label": "#1a1a1a",
+            "secondary_button_label": "#1a1a1a",
+            "shadow": "#1a1a1a"
           }
         },
         "scheme-3": {
           "settings": {
-            "background": "#292524",
+            "background": "#1a1a1a",
             "background_gradient": "",
-            "text": "#FFFEF9",
-            "button": "#FFFEF9",
-            "button_label": "#292524",
-            "secondary_button_label": "#FFFEF9",
-            "shadow": "#292524"
+            "text": "#faf9f6",
+            "button": "#c9a96e",
+            "button_label": "#1a1a1a",
+            "secondary_button_label": "#faf9f6",
+            "shadow": "#0d0d0d"
           }
         },
         "scheme-4": {
           "settings": {
-            "background": "#1C1917",
+            "background": "#0d0d0d",
             "background_gradient": "",
-            "text": "#FFFEF9",
-            "button": "#D6CFC7",
-            "button_label": "#1C1917",
-            "secondary_button_label": "#FFFEF9",
-            "shadow": "#292524"
+            "text": "#faf9f6",
+            "button": "#c9a96e",
+            "button_label": "#1a1a1a",
+            "secondary_button_label": "#faf9f6",
+            "shadow": "#000000"
           }
         },
         "scheme-5": {
           "settings": {
-            "background": "#D6CFC7",
+            "background": "#c9a96e",
             "background_gradient": "",
-            "text": "#292524",
-            "button": "#292524",
-            "button_label": "#FFFEF9",
-            "secondary_button_label": "#292524",
-            "shadow": "#292524"
+            "text": "#1a1a1a",
+            "button": "#1a1a1a",
+            "button_label": "#faf9f6",
+            "secondary_button_label": "#1a1a1a",
+            "shadow": "#a88a5a"
           }
         }
       },
-      "type_header_font": "assistant_n4",
-      "heading_scale": 110,
-      "type_body_font": "assistant_n4",
+      "type_header_font": "playfair_display_n4",
+      "heading_scale": 115,
+      "type_body_font": "dm_sans_n4",
       "body_scale": 105,
-      "page_width": 1200,
+      "page_width": 1280,
       "spacing_sections": 0,
       "spacing_grid_horizontal": 8,
       "spacing_grid_vertical": 8,
@@ -156,7 +156,7 @@
       "social_twitter_link": "",
       "social_facebook_link": "",
       "social_pinterest_link": "",
-      "social_instagram_link": "",
+      "social_instagram_link": "https://www.instagram.com/repisa.pe",
       "social_tiktok_link": "",
       "social_tumblr_link": "",
       "social_snapchat_link": "",
@@ -167,7 +167,7 @@
       "predictive_search_show_price": false,
       "currency_code_enabled": true,
       "cart_type": "drawer",
-      "show_vendor": false,
+      "show_vendor": true,
       "show_cart_note": false,
       "sections": {
         "main-password-header": {

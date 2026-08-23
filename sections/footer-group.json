@@ -15,7 +15,7 @@
         "footer-1": {
           "type": "link_list",
           "settings": {
-            "heading": "Serenne",
+            "heading": "REPISA",
             "menu": "footer"
           }
         },
@@ -23,13 +23,13 @@
           "type": "text",
           "settings": {
             "heading": "Nuestra Filosofía",
-            "subtext": "<p>Formulaciones botánicas y de laboratorio de la más fina calidad. Ingredientes puros, resultados comprobables.</p>"
+            "subtext": "<p>Tu estante de belleza curado. Marcas premium de skincare, maquillaje, fragancias y cuidado capilar seleccionadas para ti.</p>"
           }
         }
       },
       "block_order": ["footer-0", "footer-1", "footer-2"],
       "settings": {
-        "color_scheme": "scheme-4",
+        "color_scheme": "scheme-3",
         "newsletter_enable": true,
         "newsletter_heading": "Suscríbete para recibir novedades",
         "show_social": true,
