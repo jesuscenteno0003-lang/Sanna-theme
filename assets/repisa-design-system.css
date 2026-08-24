@@ -297,12 +297,12 @@ button {
 }
 
 .header-logo {
-  font-family: var(--r-font-heading);
-  font-size: 2.5rem;
-  font-weight: 400;
-  letter-spacing: 0.25em;
-  color: var(--r-black);
-  text-transform: uppercase;
+  font-family: var(--r-font-heading) !important;
+  font-size: 2.5rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.3em !important;
+  color: var(--r-black) !important;
+  text-transform: uppercase !important;
   position: relative;
   padding-bottom: 8px;
   transition: color 0.3s ease;
