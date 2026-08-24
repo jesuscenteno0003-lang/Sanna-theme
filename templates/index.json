@@ -4,11 +4,11 @@
       "type": "repisa-homepage",
       "name": "REPISA Homepage",
       "settings": {
-        "hero_subtitle": "Nueva Colección",
-        "hero_title": "Tu estante de belleza curado",
-        "hero_description": "Descubre las mejores marcas de skincare, maquillaje y fragancias. Envío gratis en pedidos +S/.200.",
-        "hero_button_text": "Explorar Colecciones",
-        "hero_secondary_text": "Nuestras Marcas",
+        "hero_subtitle": "Tu belleza, nuestra pasión",
+        "hero_title": "Cuida lo que más importa",
+        "hero_description": "Productos auténticos de las marcas que amas. Belleza que transforma.",
+        "hero_button_text": "Descubrir Ahora",
+        "hero_secondary_text": "Ver Marcas",
         "featured_title": "Favoritos de Nuestra Comunidad"
       },
       "blocks": {

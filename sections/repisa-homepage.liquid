@@ -4,34 +4,40 @@
      ================================================================ -->
 
 <div class="repisa-homepage">
-  <!-- HERO SECTION -->
+  <!-- HERO SECTION - Premium Beauty Marketplace -->
   <section class="repisa-hero">
     <div class="repisa-hero-bg">
       {% if section.settings.hero_image %}
         <img src="{{ section.settings.hero_image | image_url: width: 1920 }}" alt="{{ section.settings.hero_title }}" loading="eager">
       {% else %}
-        <img src="{{ 'hero-bg.svg' | asset_url }}" alt="REPISA Belleza" loading="eager">
+        <img src="https://images.unsplash.com/photo-1748543668676-ea8241cb3886?w=1920&q=80&auto=format&fit=crop" alt="REPISA Belleza - Skincare Premium" loading="eager">
       {% endif %}
     </div>
     <div class="repisa-hero-overlay"></div>
     <div class="repisa-hero-content">
       {% if section.settings.hero_subtitle != blank %}
-        <span class="text-uppercase">{{ section.settings.hero_subtitle }}</span>
+        <span class="text-uppercase hero-animate hero-animate-1">{{ section.settings.hero_subtitle }}</span>
       {% endif %}
       {% if section.settings.hero_title != blank %}
-        <h1>{{ section.settings.hero_title }}</h1>
+        <h1 class="hero-animate hero-animate-2">{{ section.settings.hero_title }}</h1>
       {% endif %}
       {% if section.settings.hero_description != blank %}
-        <p>{{ section.settings.hero_description }}</p>
+        <p class="hero-animate hero-animate-3">{{ section.settings.hero_description }}</p>
       {% endif %}
-      <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+      <div class="hero-buttons hero-animate hero-animate-4">
         <a href="{{ section.settings.hero_button_url | default: '/collections' }}" class="btn btn-gold">
-          {{ section.settings.hero_button_text | default: 'Explorar Colecciones' }}
+          {{ section.settings.hero_button_text | default: 'Descubrir Ahora' }}
         </a>
         <a href="{{ section.settings.hero_secondary_url | default: '/pages/nuestras-marcas' }}" class="btn btn-white">
-          {{ section.settings.hero_secondary_text | default: 'Nuestras Marcas' }}
+          {{ section.settings.hero_secondary_text | default: 'Ver Marcas' }}
         </a>
       </div>
+    </div>
+    <div class="hero-scroll-indicator">
+      <span>Descubre más</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 5v14M19 12l-7 7-7-7"/>
+      </svg>
     </div>
   </section>
 
@@ -199,25 +205,25 @@
       "type": "text",
       "id": "hero_subtitle",
       "label": "Hero Subtitle",
-      "default": "Nueva Colección"
+      "default": "Tu belleza, nuestra pasión"
     },
     {
       "type": "text",
       "id": "hero_title",
       "label": "Hero Title",
-      "default": "Tu estante de belleza curado"
+      "default": "Cuida lo que más importa"
     },
     {
       "type": "textarea",
       "id": "hero_description",
       "label": "Hero Description",
-      "default": "Descubre las mejores marcas de skincare, maquillaje y fragancias. Envío gratis en pedidos +S/.200."
+      "default": "Productos auténticos de las marcas que amas. Belleza que transforma."
     },
     {
       "type": "text",
       "id": "hero_button_text",
       "label": "Hero Button Text",
-      "default": "Explorar Colecciones"
+      "default": "Descubrir Ahora"
     },
     {
       "type": "url",
@@ -228,7 +234,7 @@
       "type": "text",
       "id": "hero_secondary_text",
       "label": "Hero Secondary Button Text",
-      "default": "Nuestras Marcas"
+      "default": "Ver Marcas"
     },
     {
       "type": "url",
