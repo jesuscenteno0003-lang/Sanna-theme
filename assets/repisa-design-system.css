@@ -752,33 +752,40 @@ button {
 
 .brand-marquee {
   overflow: hidden;
-  padding: var(--r-spacing-2xl) 0;
-  background-color: var(--r-white);
-  border-top: 1px solid var(--r-gray-200);
-  border-bottom: 1px solid var(--r-gray-200);
+  padding: var(--r-spacing-xl) 0;
+  background-color: var(--r-black);
+  border-top: 2px solid var(--r-gold);
+  border-bottom: 2px solid var(--r-gold);
 }
 
 .brand-marquee-track {
   display: flex;
   gap: var(--r-spacing-3xl);
-  animation: marquee 30s linear infinite;
+  animation: marquee 25s linear infinite;
 }
 
 .brand-marquee-item {
   flex-shrink: 0;
   font-family: var(--r-font-heading);
-  font-size: 1.25rem;
-  color: var(--r-gray-300);
+  font-size: 1.125rem;
+  color: var(--r-gold);
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.2em;
   white-space: nowrap;
   display: flex;
   align-items: center;
-  gap: var(--r-spacing-md);
+  gap: var(--r-spacing-lg);
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.brand-marquee-item:hover {
+  opacity: 1;
 }
 
 .brand-marquee-item::before {
-  content: '·';
+  content: '◆';
+  font-size: 0.5rem;
   color: var(--r-gold);
 }
 
