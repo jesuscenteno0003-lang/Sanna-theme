@@ -231,17 +231,63 @@ button {
 }
 
 /* ================================================================
-   HEADER
+   HEADER - Premium Beauty Marketplace
    ================================================================ */
 
-.repisa-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background-color: rgba(250, 249, 246, 0.95);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(26, 26, 26, 0.08);
+.header {
+  background-color: rgba(250, 249, 246, 0.98) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border-bottom: 1px solid rgba(201, 169, 110, 0.15) !important;
+}
+
+.header__heading-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header__heading-logo {
+  height: auto !important;
+}
+
+/* Logo Text Style - Premium Typographic */
+.header__heading .h2,
+.header-logo-text {
+  font-family: 'Playfair Display', serif !important;
+  font-size: 2.5rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.25em !important;
+  text-transform: uppercase !important;
+  color: #1a1a1a !important;
+  position: relative;
+  padding-bottom: 8px;
+  transition: color 0.3s ease;
+}
+
+/* Gold decorative line under logo */
+.header__heading .h2::after,
+.header-logo-text::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #c9a96e, transparent);
+  transition: width 0.3s ease;
+}
+
+/* Logo hover effect */
+.header__heading-link:hover .h2,
+.header__heading-link:hover .header-logo-text {
+  color: #c9a96e !important;
+}
+
+.header__heading-link:hover .h2::after,
+.header__heading-link:hover .header-logo-text::after {
+  width: 60px;
 }
 
 .header-inner {
@@ -255,15 +301,34 @@ button {
 
 .header-logo {
   font-family: var(--r-font-heading);
-  font-size: 1.75rem;
+  font-size: 2.5rem;
   font-weight: 400;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.25em;
   color: var(--r-black);
   text-transform: uppercase;
+  position: relative;
+  padding-bottom: 8px;
+  transition: color 0.3s ease;
+}
+
+.header-logo::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--r-gold), transparent);
+  transition: width 0.3s ease;
 }
 
 .header-logo:hover {
   color: var(--r-gold);
+}
+
+.header-logo:hover::after {
+  width: 60px;
 }
 
 .header-nav {
@@ -1337,5 +1402,17 @@ button {
   
   .hero-buttons .btn {
     width: 100%;
+  }
+  
+  /* Logo responsive */
+  .header__heading .h2,
+  .header-logo-text,
+  .header-logo {
+    font-size: 1.75rem !important;
+    letter-spacing: 0.15em !important;
+  }
+  
+  .header__heading-link {
+    justify-content: center;
   }
 }
